@@ -15,7 +15,7 @@ function getComponents() {
 async function runCLI() {
     const components = getComponents();
 
-    const { selectedComponents } = await checkbox({
+    const selectedComponents = await checkbox({
         message: 'Selecciona los componentes que deseas instalar:',
         choices: [...components, 'Todos'],
     });
