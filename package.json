@@ -1,6 +1,6 @@
 {
   "name": "reusable-nextjs-components",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "This package contains a set of reusable components based on next.js components and uses tailwindcss for styling",
   "main": "index.js",
   "scripts": {
