@@ -4,7 +4,9 @@
   "description": "This package contains a set of reusable components based on next.js components and uses tailwindcss for styling",
   "main": "index.js",
   "scripts": {
-    "test": "run test"
+    "test": "run test",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -20,5 +22,19 @@
   "bugs": {
     "url": "https://github.com/LuisUlloaC/reusable-nextjs-components/issues"
   },
-  "homepage": "https://github.com/LuisUlloaC/reusable-nextjs-components#readme"
+  "homepage": "https://github.com/LuisUlloaC/reusable-nextjs-components#readme",
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "next": "^15.2.1",
+    "react": "^19.0.0"
+  },
+  "dependencies": {
+    "libphonenumber-js": "^1.12.5",
+    "lucide-react": "^0.477.0",
+    "react-country-flag": "^3.1.0"
+  }
 }
