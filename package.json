@@ -1,0 +1,24 @@
+{
+  "name": "reusable-nextjs-components",
+  "version": "1.0.0",
+  "description": "This package contains a set of reusable components based on next.js components and uses tailwindcss for styling",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuisUlloaC/reusable-nextjs-components.git"
+  },
+  "keywords": [
+    "nextjs-components",
+    "reusable",
+    "tailwindcss"
+  ],
+  "author": "LuisUlloaC",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LuisUlloaC/reusable-nextjs-components/issues"
+  },
+  "homepage": "https://github.com/LuisUlloaC/reusable-nextjs-components#readme"
+}
