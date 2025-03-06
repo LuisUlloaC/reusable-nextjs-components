@@ -1,20 +1,30 @@
 #!/usr/bin/env node
 const inquirer = require("inquirer");
-const fs = require("fs-extra");
+const fs = require("fs/promises"); // Utilizamos fs.promises
 const path = require("path");
 
 const COMPONENTS_DIR = path.join(__dirname, "src", "components");
-
 const DESTINATION_DIR = path.join(process.cwd(), "ui", "components");
 
-function getComponents() {
-    return fs.readdirSync(COMPONENTS_DIR).filter((file) => {
-        return fs.statSync(path.join(COMPONENTS_DIR, file)).isDirectory();
-    });
+async function getComponents() {
+    // Usamos fs.promises.readdir para leer los archivos de manera asíncrona
+    const files = await fs.readdir(COMPONENTS_DIR);
+    const components = [];
+
+    for (const file of files) {
+        const filePath = path.join(COMPONENTS_DIR, file);
+        const stat = await fs.stat(filePath);
+        
+        if (stat.isDirectory()) {
+            components.push(file);
+        }
+    }
+
+    return components;
 }
 
 async function runCLI() {
-    const components = getComponents();
+    const components = await getComponents(); // Usamos await aquí
 
     const { selectedComponents } = await inquirer.prompt([
         {
@@ -30,15 +40,17 @@ async function runCLI() {
         selectedComponents.push(...components);
     }
 
-    selectedComponents.forEach((component) => {
+    for (const component of selectedComponents) {
         const source = path.join(COMPONENTS_DIR, component);
         const destination = path.join(DESTINATION_DIR, component);
 
-        fs.copySync(source, destination);
+        await fs.copyFile(source, destination);
         console.log(`✅ ${component} instalado en ${destination}`);
-    });
+    }
 
     console.log("\n🚀 Instalación completa.\n");
 }
 
-runCLI();
+runCLI().catch((error) => {
+    console.error("Error durante la instalación:", error);
+});
