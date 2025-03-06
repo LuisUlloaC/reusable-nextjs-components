@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const path = require('path');
 
 const COMPONENTS_DIR = path.join(__dirname, 'src', 'components');
-const DESTINATION_DIR = path.join(process.cwd(), 'ui', 'components');
+const DESTINATION_DIR = path.join(process.cwd(), 'components', 'ui');
 
 function getComponents() {
     return fs.readdirSync(COMPONENTS_DIR).filter((file) => {
